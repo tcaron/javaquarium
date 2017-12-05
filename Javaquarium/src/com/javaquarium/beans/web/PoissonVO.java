@@ -146,28 +146,28 @@ public class PoissonVO extends ActionForm {
 			final ActionErrors errors = new ActionErrors();
 		
 		if(StringUtils.isEmpty(getNom())){
-			errors.add("nom", new ActionMessage("errors.field.nom", "nom"));
+			errors.add("nom", new ActionMessage("errors.field.nom", "Nom"));
 		}
 		
 		if(StringUtils.isEmpty(getDescription())){
-			errors.add("description", new ActionMessage("errors.field.description", "description"));
+			errors.add("description", new ActionMessage("errors.field.description", "Description"));
 		}
 		
 		if(StringUtils.isEmpty(getCouleur())){
-			errors.add("couleur", new ActionMessage("errors.field.couleur", "couleur"));
+			errors.add("couleur", new ActionMessage("errors.field.couleur", "Couleur"));
 		}
 		
 		if(StringUtils.isEmpty(getPrix().toString())){
-			errors.add("prix", new ActionMessage("errors.field.prix", "prix"));
+			errors.add("prix", new ActionMessage("errors.field.prix", "Prix"));
 		}
 		
 		if (!getDimension().matches("[0-9]+x[0-9]+$"))
 		{
-			errors.add("dimension_regex", new ActionMessage("errors.field.match_dimension", "dimension_regex"));
+			errors.add("dimension_regex", new ActionMessage("errors.field.match_regex", "Dimension"));
 		}
 		
 		if (StringUtils.isEmpty(getDimension().toString())){
-			errors.add("dimension", new ActionMessage("errors.field.empty_dimension", "dimension"));
+			errors.add("dimension", new ActionMessage("errors.field.empty_dimension", "Dimension"));
 			
 		}
 		return errors;
