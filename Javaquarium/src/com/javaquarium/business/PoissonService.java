@@ -60,12 +60,12 @@ public class PoissonService implements IPoissonService {
 		final PoissonDO poissonDO = new PoissonDO();
 
 		poissonDO.setNom(poissonvo.getNom());
-		poissonDO.setCode(poissonvo.getCode());
+		//poissonDO.setCode(poissonvo.getCode());
 		poissonDO.setCouleur(poissonvo.getCouleur());
 		poissonDO.setDescription(poissonvo.getDescription());
 		poissonDO.setPrix(poissonvo.getPrix());
 		String[] d = poissonvo.getDimension().split(PoissonVO.SEPARATOR_POISSON);
-		poissonDO.setLongueur(Float.parseFloat(d[0]));
+		poissonDO.setLongeur(Float.parseFloat(d[0]));
 		poissonDO.setLargeur(Float.parseFloat(d[1]));
 		return poissonDO;
 	}
@@ -77,7 +77,7 @@ public class PoissonService implements IPoissonService {
 		final PoissonVO poissonVO = new PoissonVO();
 
 		poissonVO.setNom(p.getNom());
-		poissonVO.setCode(p.getCode());
+		//poissonVO.setCode(p.getCode());
 		poissonVO.setCouleur(p.getCouleur());
 		poissonVO.setDescription(p.getDescription());
 		poissonVO.setDimension(p.getLongueur() + PoissonVO.SEPARATOR_POISSON + p.getLargeur());

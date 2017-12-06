@@ -18,7 +18,6 @@
 	<div class="pure-control-group">
 		<bean:message key="ajouter.message.poisson" />
 	</div>
-
 	<html:form action="ajouterNouveauPoisson" styleClass="form-horizontal">
 		<html:errors />
 		<br />

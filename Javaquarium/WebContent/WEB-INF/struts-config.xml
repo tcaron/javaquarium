@@ -32,7 +32,7 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
 	<!--  path /ajouterNouveauPoisson lié au formulaire de la jsp UC02_ajout -->
 	<action path="/ajouterNouveauPoisson" input="/jsp/UC02_ajout.jsp" scope="request" name="poissonForm" type="org.springframework.web.struts.DelegatingActionProxy">
 		<forward name="success" path="listerEspece.do" redirect="true" />
-		<forward name="failure" path="/jsp/UC02_ajout.jsp" redirect="true" />
+		
 	</action>
 	
 		<!--Remove poisson -->

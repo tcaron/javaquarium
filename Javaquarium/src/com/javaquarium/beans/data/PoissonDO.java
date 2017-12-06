@@ -7,51 +7,92 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/**
- * 
- * @author alex
- *
- */
 @Entity
-@Table(name = "Poisson")
+@Table(name = "poisson")
+
 public class PoissonDO {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id", nullable = false)
-	private Integer code;
-
-	@Column(name = "nom", nullable = false, unique = true)
-	private String nom;
-
-	@Column(name = "description", nullable = false)
-	private String description;
+	@Column(name = "id")
+	private Integer id;
 
 	@Column(name = "couleur", nullable = false)
 	private String couleur;
 
+	@Column(name = "description", nullable = false)
+	private String description;
+
 	@Column(name = "largeur", nullable = false)
-	private Float largeur;
+	private float largeur;
 
 	@Column(name = "longueur", nullable = false)
-	private Float longueur;
+	private float longueur;
+
+	@Column(name = "nom", nullable = false, unique = true)
+	private String nom;
 
 	@Column(name = "prix", nullable = false)
 	private Integer prix;
 
 	/**
-	 * @return the code
+	 * @return the couleur
 	 */
-	public Integer getCode() {
-		return code;
+	public String getCouleur() {
+		return couleur;
 	}
 
 	/**
-	 * @param code
-	 *            the code to set
+	 * @param couleur
+	 *            the couleur to set
 	 */
-	public void setCode(Integer code) {
-		this.code = code;
+	public void setCouleur(String couleur) {
+		this.couleur = couleur;
+	}
+
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * @param descritpion
+	 *            the descritpion to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	/**
+	 * @return the largeur
+	 */
+	public float getLargeur() {
+		return largeur;
+	}
+
+	/**
+	 * @param largeur
+	 *            the largeur to set
+	 */
+	public void setLargeur(float largeur) {
+		this.largeur = largeur;
+	}
+
+	/**
+	 * @return the longeur
+	 */
+	public float getLongueur() {
+		return longueur;
+	}
+
+	/**
+	 * @param longeur
+	 *            the longeur to set
+	 */
+	public void setLongeur(float longueur) {
+		this.longueur = longueur;
 	}
 
 	/**
@@ -70,66 +111,6 @@ public class PoissonDO {
 	}
 
 	/**
-	 * @return the description
-	 */
-	public String getDescription() {
-		return description;
-	}
-
-	/**
-	 * @param description
-	 *            the description to set
-	 */
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	/**
-	 * @return the couleur
-	 */
-	public String getCouleur() {
-		return couleur;
-	}
-
-	/**
-	 * @param couleur
-	 *            the couleur to set
-	 */
-	public void setCouleur(String couleur) {
-		this.couleur = couleur;
-	}
-
-	/**
-	 * @return the largeur
-	 */
-	public Float getLargeur() {
-		return largeur;
-	}
-
-	/**
-	 * @param largeur
-	 *            the largeur to set
-	 */
-	public void setLargeur(Float largeur) {
-		this.largeur = largeur;
-	}
-
-	/**
-	 * @return the longueur
-	 */
-	public Float getLongueur() {
-		return longueur;
-	}
-
-	/**
-	 * @param longueur
-	 *            the longueur to set
-	 */
-	public void setLongueur(Float longueur) {
-		this.longueur = longueur;
-	}
-
-	/**
 	 * @return the prix
 	 */
 	public Integer getPrix() {
@@ -144,8 +125,14 @@ public class PoissonDO {
 		this.prix = prix;
 	}
 
-	public PoissonDO() {
+	/**
+	 * @return the id
+	 */
+	public Integer getId() {
+		return id;
+	}
 
+	public PoissonDO() {
 	}
 
 }
