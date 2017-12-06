@@ -20,6 +20,7 @@
 		<html:errors />
 	</ul>
 	<html:form action="pageInscription" styleClass="form-horizontal">
+		
 		<div class="form-group">
 			<label for="login" class="col-sm-3 control-label"> <bean:message
 					key="message.inscription.input.name.login" />
@@ -27,6 +28,18 @@
 			<div class="col-sm-5">
 				<html:text styleClass="form-control" styleId="login"
 					property="utilisateur" />
+					
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label for="email" class="col-sm-3 control-label"> <bean:message
+					key="message.inscription.input.name.email" />
+			</label>
+			<div class="col-sm-5">
+				<html:text styleClass="form-control" styleId="email"
+					property="email" />
+					
 			</div>
 		</div>
 
@@ -45,28 +58,7 @@
 					key="message.inscription.input.name.passwordverif" />
 			</label>
 			<div class="col-sm-5">
-				<html:password styleClass="form-control" styleId="password"
-					property="motDePasse" />
-			</div>
-		</div>
-		
-		<div class="form-group">
-			<label for="login" class="col-sm-3 control-label"> <bean:message
-					key="message.inscription.input.name.naissance" />
-			</label>
-			<div class="col-sm-5">
-				<html:text styleClass="form-control" styleId="login"
-					property="utilisateur" />
-			</div>
-		</div>
-		
-		<div class="form-group">
-			<label for="login" class="col-sm-3 control-label"> <bean:message
-					key="message.inscription.input.name.email" />
-			</label>
-			<div class="col-sm-5">
-				<html:text styleClass="form-control" styleId="login"
-					property="utilisateur" />
+			<html:password styleClass="form-control" styleId="password" property="motDePasse" />
 					
 			</div>
 		</div>
@@ -80,9 +72,7 @@
 				<html:reset property="reset" styleClass="btn btn-danger">
 					<bean:message key="message.inscription.button.name.reset" />
 				</html:reset>
-				<a class="btn btn-primary col-sm-offset-1"
-				href="/Javaquarium/jsp/UC00_login.jsp"> <bean:message
-					key="message.inscription.button.name.retouraccueil" />
+				<a class="btn btn-primary col-sm-offset-1" href="/Javaquarium/jsp/UC00_login.jsp"> <bean:message key="message.inscription.button.name.retouraccueil" />
 			</a>
 			</div>
 		</div>

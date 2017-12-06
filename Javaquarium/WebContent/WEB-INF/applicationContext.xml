@@ -4,6 +4,7 @@
 <beans>
    <!-- DAO -->
    <bean id="poissonDAO" class="com.javaquarium.dao.PoissonDAO" singleton="true"/>
+    <bean id="utilisateurDAO" class="com.javaquarium.dao.UtilisateurDAO" singleton="true"/>
   
    <!-- Services -->
    <bean id="poissonService" class ="com.javaquarium.business.PoissonService" singleton="true">
