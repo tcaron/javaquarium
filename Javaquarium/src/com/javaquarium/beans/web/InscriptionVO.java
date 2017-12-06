@@ -22,7 +22,7 @@ public class InscriptionVO extends ActionForm{
 	private String motDePasse;
 	private String motDePasse2;
 	private String email;
-	private String naissance;
+
 	
 	
 	
@@ -69,22 +69,7 @@ public class InscriptionVO extends ActionForm{
 		this.email = email;
 	}
 	
-	/**
-	 * @return the naissance
-	 */
-	
-	public String getNaissance() {
-		return naissance;
-	}
-
-	/**
-	 * @param naissance
-	 *            the naissance to set
-	 */
-	public void setNaissance(String naissance) {
-		this.naissance = naissance;
-	}
-	
+		
 	/**
 	 * @return the motDePasse2
 	 */
@@ -110,30 +95,24 @@ public class InscriptionVO extends ActionForm{
 		}
 
 		if (StringUtils.isEmpty(getMotDePasse())) {
-			errors.add("password1", new ActionMessage("errors.inscription.field.password_1", "Mot de passe"));
+			errors.add("motDePasse", new ActionMessage("errors.inscription.field.password_1", "Mot de passe"));
 
 		}
 
 		if (StringUtils.length(getMotDePasse()) < 4) {
-			errors.add("password2", new ActionMessage("errors.field.minlength", "Mot de passe"));
+			errors.add("motDePasse", new ActionMessage("errors.field.minlength", "Mot de passe"));
 		}
 		
 		
 		if (StringUtils.isEmpty(getVerifPassword())) {
-			errors.add("pass", new ActionMessage("errors.inscription.field.password_2", "Mot de passe à nouveau"));
+			errors.add("motDePasse", new ActionMessage("errors.inscription.field.password_2", "Mot de passe à nouveau"));
 
 		}
 		
 		if (getMotDePasse() != getVerifPassword() || getVerifPassword() != getMotDePasse()) {
-			errors.add("pwd", new ActionMessage("errors.inscription.field.verifpassword", "Mot de passe & Mot de passe à nouveau"));
+			errors.add("motDePasse", new ActionMessage("errors.inscription.field.verifpassword", "Mot de passe & Mot de passe à nouveau"));
 
-		}
-		
-		if (StringUtils.isEmpty(getNaissance())) {
-			errors.add("naissance", new ActionMessage("errors.inscription.field.naissance", "Date de naissance"));
-
-		}
-		
+		}		
 		
 		if (StringUtils.isEmpty(getEmail())) {
 			errors.add("email", new ActionMessage("errors.field.empty_email", "Adresse email"));

@@ -9,19 +9,22 @@ import com.javaquarium.util.HibernateUtils;
 
 public class UtilisateurDAO implements IUtilisateurDAO {
 
-	@Override
-	public boolean Search(String utilisateur, String motdepasse) {
+	
 
-		final Session session = HibernateUtils.getSession();
+	@Override
+	public boolean Search(String utilisateur, String motDePasse, String motDepasse2) {
+		
+final Session session = HibernateUtils.getSession();
 		
 		UtilisateurDO utilisateurDO = null;
 		
 		try {
 			
-			final Query req = session.createQuery("from UtilistaeurDO where utilisateur= :user and motdepasse= :password");
+			final Query req = session.createQuery("from UtilistaeurDO where utilisateur= :utilisateur and motDePasse= :motdepasse and motDePasse2 = :verification_motdepasse");
 			
-			req.setString("user",utilisateur);
-			req.setString("password",motdepasse);
+			req.setString("utilisateur",utilisateur);
+			req.setString("motdepasse",motDePasse);
+			req.setString("verification_motdepasse",motDepasse2);
 			
 			utilisateurDO = (UtilisateurDO) req.uniqueResult();
 			

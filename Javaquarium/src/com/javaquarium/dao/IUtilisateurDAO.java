@@ -11,7 +11,7 @@ public interface IUtilisateurDAO {
 	 *  On regarde si l'utilisateur existe 
 	 */
 
-	boolean Search (String utilisateur, String motdepasse);
+	boolean Search (String utilisateur, String motDePasse, String motDepasse2);
 	
 	
 }

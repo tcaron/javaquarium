@@ -22,10 +22,7 @@ public class UtilisateurDO {
 	    
 	    @Column(name = "email")
 	    private String email;
-	    
-	    @Column(name = "naissance")
-	    private String naissance;
-	    
+	    	    
 	    
 	    public Integer getId() {
 	        return id;
@@ -60,14 +57,7 @@ public class UtilisateurDO {
 	    	this.email = email;
 	    }
 	    
-	    public String getNaissance(){
-	    	return naissance;
-	    }
-	    
-	    public void setNaissance(String naissance){
-	    	this.naissance = naissance;
-	    }
-	    
+	  
 	    public String getVerifMotDePasse(){
 	    	return motDePasse2;
 	    }
