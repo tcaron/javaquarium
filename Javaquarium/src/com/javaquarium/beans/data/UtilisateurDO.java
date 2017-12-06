@@ -17,36 +17,63 @@ public class UtilisateurDO {
 	    @Column(name = "motdepasse")
 	    private String motDePasse;
 	    
+	    @Column(name = "verification_motdepasse")
+	    private String motDePasse2;
+	    
+	    @Column(name = "email")
+	    private String email;
+	    
+	    @Column(name = "naissance")
+	    private String naissance;
+	    
 	    
 	    public Integer getId() {
 	        return id;
 	    }
 
 	    public void setId(Integer id) {
-	        this.id = id;
-	        
+	        this.id = id; 
 	    }
 	        
 	    public String getUtilisateur() {
 	    	return utilisateur;
-	    	
 	    }
 
 	       
 	    public void setUtilisateur(String utilisateur) {
 	    	this.utilisateur =utilisateur;
-	    	
 	    }
 
 	    public String getMotdepasse() {
 	    	return motDePasse;
-	    	
 	    }
 	 
 	    public void setPassword(String motDePasse) {
 	    	this.motDePasse = motDePasse;
-	    	
-
+	    }
+	    
+	    public String getEmail(){
+	    	return email;
+	    }
+	    
+	    public void setEmail(String email){
+	    	this.email = email;
+	    }
+	    
+	    public String getNaissance(){
+	    	return naissance;
+	    }
+	    
+	    public void setNaissance(String naissance){
+	    	this.naissance = naissance;
+	    }
+	    
+	    public String getVerifMotDePasse(){
+	    	return motDePasse2;
+	    }
+	    
+	    public void SetVerifMotDePasse(String motDePasse2){
+	    	this.motDePasse2 = motDePasse2;
 	    }
 	    
 	}
