@@ -20,12 +20,7 @@ public class InscriptionVO extends ActionForm{
 	
 	private String utilisateur;
 	private String motDePasse;
-	private String motDePasse2;
-	private String email;
 
-	
-	
-	
 	public String getUtilisateur() {
 		return utilisateur;
 	}
@@ -53,38 +48,6 @@ public class InscriptionVO extends ActionForm{
 		this.motDePasse = motDePasse;
 	}
 	
-	
-	/**
-	 * @return the email
-	 */
-	public String getEmail() {
-		return email;
-	}
-
-	/**
-	 * @param email
-	 *            the email to set
-	 */
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	
-		
-	/**
-	 * @return the motDePasse2
-	 */
-	public String getVerifPassword() {
-		return motDePasse2;
-	}
-
-	/**
-	 * @param motDePasse2
-	 *            the motDePasse2 to set
-	 */
-	public void setVerifPassword(String motDePasse2) {
-		this.motDePasse2 = motDePasse2;
-	}
-
 	@Override
 	public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
 
@@ -103,28 +66,6 @@ public class InscriptionVO extends ActionForm{
 			errors.add("motDePasse", new ActionMessage("errors.field.minlength", "Mot de passe"));
 		}
 		
-		
-		if (StringUtils.isEmpty(getVerifPassword())) {
-			errors.add("motDePasse", new ActionMessage("errors.inscription.field.password_2", "Mot de passe à nouveau"));
-
-		}
-		
-		if (getMotDePasse() != getVerifPassword() || getVerifPassword() != getMotDePasse()) {
-			errors.add("motDePasse", new ActionMessage("errors.inscription.field.verifpassword", "Mot de passe & Mot de passe à nouveau"));
-
-		}		
-		
-		if (StringUtils.isEmpty(getEmail())) {
-			errors.add("email", new ActionMessage("errors.field.empty_email", "Adresse email"));
-
-		}
-		
-		
-		
-		
-		 // va récupéré le nom de l'utilisateur inscrit dans le formulaire
-		//request.getSession().setAttribute("utilisateur", this);
-
 		return errors;
 	}
 	

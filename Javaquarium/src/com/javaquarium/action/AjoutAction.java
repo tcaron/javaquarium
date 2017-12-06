@@ -20,13 +20,12 @@ import com.javaquarium.business.IPoissonService;
 public class AjoutAction extends Action {
 
 	private static final String FW_SUCCESS = "success";
-	private static final String FW_ERROR = "failure";
+
 	private IPoissonService poissonService;
 
 	@SuppressWarnings("deprecation")
 	public ActionForward execute(final ActionMapping mapping, final ActionForm form, final HttpServletRequest req,
 			final HttpServletResponse res) {
-		String result = null;
 		final PoissonVO p = (PoissonVO) form;
 		try {
 		poissonService.save(p);
