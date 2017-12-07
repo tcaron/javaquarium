@@ -11,9 +11,9 @@
        <property name="poissonDAO"> <ref bean="poissonDAO"/></property>
    </bean>
    
-   <bean id="utilisateurservice" class ="com.javaquarium.business.UtilisateurService" singleton="true">
+ 	<!--  <bean id="utilisateurService" class ="com.javaquarium.business.UtilisateurService" singleton="true">
        <property name="utilisateurDAO"> <ref bean="utilisateurDAO"/></property>
-   </bean>
+   </bean> -->
 
    <!-- Actions -->
    <bean name="/ajouterNouveauPoisson" class="com.javaquarium.action.AjoutAction" singleton="true">
@@ -31,9 +31,9 @@
        <property name="poissonService"> <ref bean="poissonService"/></property>
    </bean>
 
-   <bean name="/ajouterNouveauUtilisateur" class="com.javaquarium.action.InscriptionAction" singleton="true">
-       <property name="utilisateurservice"> <ref bean="utilisateurservice"/></property>
-   </bean>
+  <!--  <bean name="/ajouterNouveauUtilisateur" class="com.javaquarium.action.InscriptionAction" singleton="true">
+       <property name="utilisateurService"> <ref bean="utilisateurService"/></property>
+   </bean> -->
    
   
 </beans>

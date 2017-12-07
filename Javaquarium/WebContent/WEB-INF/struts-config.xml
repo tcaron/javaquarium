@@ -24,7 +24,7 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
 		<forward name="failure" path="/jsp/UC00_login.jsp" redirect="true" />
 	</action>
 	
-	<action path="/ajouterNouveauUtilisateur"  input="/jsp/UC03_inscription.jsp" scope="request" name="inscriptionForm" type="org.springframework.web.struts.DelegatingActionProxy">
+	  <action path="/ajouterNouveauUtilisateur"  input="/jsp/UC03_inscription.jsp" scope="request" name="inscriptionForm" type="org.springframework.web.struts.DelegatingActionProxy">
 		<forward name="success" path="/listerEspece.do" redirect="true"/>
 		<forward name="failure" path="/jsp/UC00_login.jsp" redirect="true" />
 	</action>
@@ -32,14 +32,15 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
 	<!--  path /ajouterNouveauPoisson lié au formulaire de la jsp UC02_ajout -->
 	<action path="/ajouterNouveauPoisson" input="/jsp/UC02_ajout.jsp" scope="request" name="poissonForm" type="org.springframework.web.struts.DelegatingActionProxy">
 		<forward name="success" path="listerEspece.do" redirect="true" />
-		
 	</action>
 	
 		<!--Remove poisson -->
 	<action path="/removeEspece" type="org.springframework.web.struts.DelegatingActionProxy">
 		<forward name="success" path="listerEspece.do" redirect="true"/> 
 	</action>
+	
 </action-mappings>
+
 <message-resources parameter="ApplicationResources"/>
 
  <plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">
