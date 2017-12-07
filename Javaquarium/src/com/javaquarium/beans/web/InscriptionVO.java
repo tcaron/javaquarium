@@ -58,13 +58,18 @@ public class InscriptionVO extends ActionForm{
 		}
 
 		if (StringUtils.isEmpty(getMotDePasse())) {
-			errors.add("motDePasse", new ActionMessage("errors.inscription.field.password_1", "Mot de passe"));
-
+			errors.add("motDePasse", new ActionMessage("errors.inscription.field.password", "Mot de passe"));
+		}
+		
+		if (StringUtils.length(getUtilisateur()) < 4) {
+			errors.add("utilistaeur", new ActionMessage("errors.inscription.field.nom_2", "Utilisateur"));
 		}
 
 		if (StringUtils.length(getMotDePasse()) < 4) {
 			errors.add("motDePasse", new ActionMessage("errors.field.minlength", "Mot de passe"));
 		}
+		
+		request.getSession().setAttribute("utilisateur", this);
 		
 		return errors;
 	}

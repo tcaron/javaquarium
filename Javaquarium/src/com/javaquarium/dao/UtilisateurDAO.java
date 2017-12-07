@@ -1,44 +1,31 @@
 package com.javaquarium.dao;
-
-
-import org.hibernate.Query;
-import org.hibernate.Session;
-
 import com.javaquarium.beans.data.UtilisateurDO;
-import com.javaquarium.util.HibernateUtils;
 
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import com.javaquarium.util.HibernateUtils;
 public class UtilisateurDAO implements IUtilisateurDAO {
 
-	
-
 	@Override
-	public boolean Search(String utilisateur, String motDePasse, String motDepasse2) {
+	public void insert(UtilisateurDO utilisateur) {
 		
-final Session session = HibernateUtils.getSession();
+		final Session s = HibernateUtils.getSession();
 		
-		UtilisateurDO utilisateurDO = null;
-		
-		try {
+		try{
 			
-			final Query req = session.createQuery("from UtilistaeurDO where utilisateur= :utilisateur and motDePasse= :motdepasse and motDePasse2 = :verification_motdepasse");
+			final Transaction t = (Transaction) s.beginTransaction();
+			s.save(utilisateur);
+			t.commit();
 			
-			req.setString("utilisateur",utilisateur);
-			req.setString("motdepasse",motDePasse);
-			req.setString("verification_motdepasse",motDepasse2);
-			
-			utilisateurDO = (UtilisateurDO) req.uniqueResult();
-			
-		} catch (Exception e) {
-			
-			e.printStackTrace();
-			
-		}finally {
-			
-			session.close();
 		}
 		
-		return utilisateurDO != null;
+		finally {
+			
+			s.close();
+		}
+		
 	}
-	
+
+
 }
 	

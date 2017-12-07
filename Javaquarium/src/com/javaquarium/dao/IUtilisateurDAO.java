@@ -1,5 +1,7 @@
 package com.javaquarium.dao;
 
+import com.javaquarium.beans.data.UtilisateurDO;
+
 /**
  * 
  * @author alex
@@ -7,11 +9,6 @@ package com.javaquarium.dao;
  */
 public interface IUtilisateurDAO {
 	
-	/*
-	 *  On regarde si l'utilisateur existe 
-	 */
-
-	boolean Search (String utilisateur, String motDePasse, String motDepasse2);
-	
+	void insert(UtilisateurDO utilisateur);
 	
 }
