@@ -8,7 +8,7 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
 <form-beans type="org.apache.struts.action.ActionFormBean">
 	<form-bean name="loginForm" type="com.javaquarium.beans.web.LoginVO" />
 	<form-bean name="poissonForm" type="com.javaquarium.beans.web.PoissonVO" />
-	<form-bean name="InscriptionForm" type="com.javaquarium.beans.web.InscriptionVO" />
+	<form-bean name="inscriptionForm" type="com.javaquarium.beans.web.InscriptionVO" />
 </form-beans>
 
 <action-mappings>
@@ -24,7 +24,7 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
 		<forward name="failure" path="/jsp/UC00_login.jsp" redirect="true" />
 	</action>
 	
-	<action path="/pageInscription"  input="/jsp/UC03_inscription.jsp" scope="request" name="InscriptionForm" type="org.springframework.web.struts.DelegatingActionProxy">
+	<action path="/ajouterNouveauUtilisateur"  input="/jsp/UC03_inscription.jsp" scope="request" name="inscriptionForm" type="org.springframework.web.struts.DelegatingActionProxy">
 		<forward name="success" path="/listerEspece.do" redirect="true"/>
 		<forward name="failure" path="/jsp/UC00_login.jsp" redirect="true" />
 	</action>
