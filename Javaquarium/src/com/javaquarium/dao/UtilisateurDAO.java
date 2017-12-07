@@ -1,9 +1,11 @@
 package com.javaquarium.dao;
 import com.javaquarium.beans.data.UtilisateurDO;
-
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import com.javaquarium.util.HibernateUtils;
+
+
+
 public class UtilisateurDAO implements IUtilisateurDAO {
 
 	@Override

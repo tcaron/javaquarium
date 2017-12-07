@@ -18,7 +18,7 @@ public class InscriptionAction extends Action {
 	
 	private static final String FW_SUCCESS = "success";
 	
-	private IUtilisateurService utilisateurservice;
+	private IUtilisateurService utilisateurService;
 
 	@SuppressWarnings("deprecation")
 	public ActionForward execute(final ActionMapping mapping, final ActionForm form, final HttpServletRequest req,
@@ -27,7 +27,7 @@ public class InscriptionAction extends Action {
 		final InscriptionVO ins = (InscriptionVO)form;
 		
 		try{
-			utilisateurservice.save(ins);
+			utilisateurService.save(ins);
 		}catch (ConstraintViolationException e) {
 			
 			final ActionErrors errors = new ActionErrors();
@@ -41,8 +41,8 @@ public class InscriptionAction extends Action {
 		
 	}
 		
-	public void setIUtilisateurService(IUtilisateurService utilisateurservice){
-		this.utilisateurservice = utilisateurservice;
+	public void setIUtilisateurService(IUtilisateurService utilisateurService){
+		this.utilisateurService = utilisateurService;
 	}
 	
 }
