@@ -12,6 +12,7 @@ import org.apache.struts.action.ActionMapping;
 
 import com.javaquarium.beans.web.PoissonVO;
 import com.javaquarium.business.IPoissonService;
+import com.javaquarium.business.IUtilisateurService;
 
 /**
  * @author Alex Classic Action
@@ -21,7 +22,6 @@ public class ListerEspeceAction extends Action {
 	private static final String FW_SUCCESS = "success";
 	public static final String SESSION_REQUEST = "requestTableauPoisson";
 	private IPoissonService poissonService;
-
 	public ActionForward execute(final ActionMapping mapping, final ActionForm form, final HttpServletRequest req,
 			final HttpServletResponse res) {
 
@@ -40,5 +40,6 @@ public class ListerEspeceAction extends Action {
 	public void setPoissonService(IPoissonService poissonService) {
 		this.poissonService = poissonService;
 	}
+
 
 }

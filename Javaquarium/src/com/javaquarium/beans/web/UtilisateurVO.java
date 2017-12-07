@@ -14,7 +14,7 @@ import org.apache.struts.action.ActionMessage;
  *
  */
 
-public class InscriptionVO extends ActionForm{
+public class UtilisateurVO extends ActionForm{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -23,6 +23,12 @@ public class InscriptionVO extends ActionForm{
 
 	public String getUtilisateur() {
 		return utilisateur;
+	}
+	
+	public UtilisateurVO(){}
+	public UtilisateurVO (String utilisateur, String motDePasse){
+		this.utilisateur = utilisateur;
+		this.motDePasse = motDePasse;
 	}
 
 	/**

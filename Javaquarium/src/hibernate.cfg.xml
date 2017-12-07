@@ -12,7 +12,7 @@
          <property name="hibernate.connection.username">root</property> 
         <property name="hibernate.connection.password"></property>
 		<property name="configurationClass">org.hibernate.cfg.AnnotationConfiguration</property> 
-
+		<property name="connection.autocommit">true</property>
 <!--         Affiche les logs SQL -->
         <property name="show_sql">true</property>
          <property name="hibernate.format_sql">true</property> 

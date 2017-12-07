@@ -11,38 +11,34 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 import org.hibernate.exception.ConstraintViolationException;
 
-import com.javaquarium.beans.web.InscriptionVO;
+import com.javaquarium.beans.web.UtilisateurVO;
 import com.javaquarium.business.IUtilisateurService;
+import com.javaquarium.business.UtilisateurService;
 
 public class InscriptionAction extends Action {
 	
 	private static final String FW_SUCCESS = "success";
 	
-	private IUtilisateurService utilisateurService;
+
 
 	@SuppressWarnings("deprecation")
 	public ActionForward execute(final ActionMapping mapping, final ActionForm form, final HttpServletRequest req,
 			final HttpServletResponse res) {
+	   UtilisateurService utilisateurService = new UtilisateurService();
+		final UtilisateurVO user = (UtilisateurVO) form;
 		
-		final InscriptionVO ins = (InscriptionVO)form;
 		
-		try{
-			utilisateurService.save(ins);
-		}catch (ConstraintViolationException e) {
-			
-			final ActionErrors errors = new ActionErrors();
-			errors.add("name_constraint",new ActionMessage("error.name.utilisateur_unique"));
-			saveErrors(req, errors);
-			return mapping.getInputForward();
+		try {
+			utilisateurService.save(user);
 		}
+		catch (Exception e){
+			 System.out.println("fail2");
+		}
+	
 		
 		return mapping.findForward(FW_SUCCESS);
-		
-		
+			
 	}
-		
-	public void setIUtilisateurService(IUtilisateurService utilisateurService){
-		this.utilisateurService = utilisateurService;
-	}
+	
 	
 }

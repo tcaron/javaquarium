@@ -31,11 +31,11 @@ public class UtilisateurDO {
 	    	this.utilisateur =utilisateur;
 	    }
 
-	    public String getMotdepasse() {
+	    public String getMotDePasse() {
 	    	return motDePasse;
 	    }
 	 
-	    public void setPassword(String motDePasse) {
+	    public void setMotDePasse(String motDePasse) {
 	    	this.motDePasse = motDePasse;
 	    }
 	    

@@ -1,8 +1,8 @@
 package com.javaquarium.business;
 
-import com.javaquarium.beans.web.InscriptionVO;
+import com.javaquarium.beans.web.UtilisateurVO;
 
 public interface IUtilisateurService {
 
-	void save (InscriptionVO inscriptionvo);
+	void save (UtilisateurVO utilisateurVO);
 }

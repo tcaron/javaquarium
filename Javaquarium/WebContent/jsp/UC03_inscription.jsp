@@ -19,7 +19,7 @@
 	<ul class="list-group">
 		<html:errors />
 	</ul>
-	<html:form action="ajouterNouveauUtilisateur" styleClass="form-horizontal">
+	<html:form action="pageInscription" styleClass="form-horizontal">
 		
 		<div class="form-group">
 			<label for="login" class="col-sm-3 control-label"> <bean:message

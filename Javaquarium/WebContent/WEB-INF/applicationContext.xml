@@ -4,17 +4,12 @@
 <beans>
    <!-- DAO -->
    <bean id="poissonDAO" class="com.javaquarium.dao.PoissonDAO" singleton="true"/>
-    <bean id="utilisateurDAO" class="com.javaquarium.dao.UtilisateurDAO" singleton="true"/>
+ 
   
    <!-- Services -->
    <bean id="poissonService" class ="com.javaquarium.business.PoissonService" singleton="true">
        <property name="poissonDAO"> <ref bean="poissonDAO"/></property>
    </bean>
-   
- 	<!--  <bean id="utilisateurService" class ="com.javaquarium.business.UtilisateurService" singleton="true">
-       <property name="utilisateurDAO"> <ref bean="utilisateurDAO"/></property>
-   </bean> -->
-
    <!-- Actions -->
    <bean name="/ajouterNouveauPoisson" class="com.javaquarium.action.AjoutAction" singleton="true">
        <property name="poissonService"> <ref bean="poissonService"/></property>
@@ -24,18 +19,11 @@
        <property name="poissonService"> <ref bean="poissonService"/></property>
    </bean>
   
-  <bean name="/pageLogin" class="com.javaquarium.action.LoginAction" singleton="true">
-   </bean>
-  
+  <bean name="/pageLogin" class="com.javaquarium.action.LoginAction" singleton="true"></bean>
   <bean name="/removeEspece" class="com.javaquarium.action.RemoveAction" singleton="true">
        <property name="poissonService"> <ref bean="poissonService"/></property>
    </bean>
 
-  <!--  <bean name="/ajouterNouveauUtilisateur" class="com.javaquarium.action.InscriptionAction" singleton="true">
-       <property name="utilisateurService"> <ref bean="utilisateurService"/></property>
-   </bean> -->
-   
-  
 </beans>
 
 

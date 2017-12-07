@@ -1,7 +1,7 @@
 package com.javaquarium.business;
 
 import com.javaquarium.beans.data.UtilisateurDO;
-import com.javaquarium.beans.web.InscriptionVO;
+import com.javaquarium.beans.web.UtilisateurVO;
 import com.javaquarium.dao.IUtilisateurDAO;
 
 public class UtilisateurService implements IUtilisateurService {
@@ -9,21 +9,22 @@ public class UtilisateurService implements IUtilisateurService {
 	private IUtilisateurDAO utilisateurDAO;
 	
 	@Override
-	public void save(InscriptionVO inscriptionvo) {
+	public void save(UtilisateurVO inscriptionvo) {
 	
 		final UtilisateurDO utilisateurDO = map(inscriptionvo);
-		
-		utilisateurDAO.insert(utilisateurDO);
+	
+			utilisateurDAO.insert(utilisateurDO);
+	
 		
 	}
 
 	
-	private UtilisateurDO map(InscriptionVO inscriptionvo) {
+	private UtilisateurDO map(UtilisateurVO inscriptionvo) {
 
 			final UtilisateurDO utilisateurDO = new UtilisateurDO();
 			
 			utilisateurDO.setUtilisateur(inscriptionvo.getUtilisateur());
-			utilisateurDO.setPassword(inscriptionvo.getMotDePasse());
+			utilisateurDO.setMotDePasse(inscriptionvo.getMotDePasse());
 			
 			return utilisateurDO;
 	}

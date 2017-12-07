@@ -12,13 +12,17 @@ public class UtilisateurDAO implements IUtilisateurDAO {
 	public void insert(UtilisateurDO utilisateur) {
 		
 		final Session s = HibernateUtils.getSession();
-		
+
 		try{
 			
 			final Transaction t = (Transaction) s.beginTransaction();
 			s.save(utilisateur);
 			t.commit();
 			
+		}
+		catch(Exception e) {
+			
+			System.out.println("fail");
 		}
 		
 		finally {
