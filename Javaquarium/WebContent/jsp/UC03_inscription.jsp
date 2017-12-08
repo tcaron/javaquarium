@@ -13,7 +13,7 @@
 
 <body class="container">
 	<h1>
-		<bean:message key="message.inscription.title.headertitle" />
+		<bean:message key="message.inscription.title.pagetitle" />
 	</h1>
 	<hr />
 	<ul class="list-group">
@@ -41,6 +41,15 @@
 					property="motDePasse" />
 			</div>
 		</div>
+		
+		 <div class="form-group">
+        <label for="password-repeat" class="col-sm-3 control-label">
+          <bean:message key="message.inscription.input.name.passwordverif"/>
+        </label>
+        <div class="col-sm-5"> 
+          <html:password styleClass="form-control" styleId="password-repeat" property="repeatPassword"/>
+        </div>
+      </div>
 		
 		<div class="form-group">
 			<div class="col-sm-offset-3 col-sm-9">

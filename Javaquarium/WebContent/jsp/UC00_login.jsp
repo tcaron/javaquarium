@@ -52,7 +52,7 @@
 				</html:reset>
 				
 				<a class="btn btn-primary col-sm-offset-1"
-				href="/Javaquarium/jsp/UC03_inscription.jsp"> <bean:message
+				href="/Javaquarium/jsp/UC03_register.jsp"> <bean:message
 					key="message.login.button.name.inscription" />
 			</a>
 			</div>
