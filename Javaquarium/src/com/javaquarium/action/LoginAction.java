@@ -8,9 +8,6 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import com.javaquarium.business.IPoissonService;
-import com.javaquarium.business.IUtilisateurService;
-
 /**
  * @author Alex Classic Action
  */

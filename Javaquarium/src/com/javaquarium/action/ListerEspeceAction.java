@@ -12,7 +12,6 @@ import org.apache.struts.action.ActionMapping;
 
 import com.javaquarium.beans.web.PoissonVO;
 import com.javaquarium.business.IPoissonService;
-import com.javaquarium.business.IUtilisateurService;
 
 /**
  * @author Alex Classic Action

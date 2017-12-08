@@ -9,36 +9,38 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
-import org.hibernate.exception.ConstraintViolationException;
 
-import com.javaquarium.beans.web.UtilisateurVO;
-import com.javaquarium.business.IUtilisateurService;
-import com.javaquarium.business.UtilisateurService;
+import com.javaquarium.business.IUserService;
+import com.javaquarium.business.UserService;
+import com.javaquarium.beans.web.UserVO;
+
+/**
+ * @author Alex Classic Action
+ */
 
 public class InscriptionAction extends Action {
+
 	
 	private static final String FW_SUCCESS = "success";
-	
-
+	private static final String FW_FORM_ERROR = "form_error";
 
 	@SuppressWarnings("deprecation")
-	public ActionForward execute(final ActionMapping mapping, final ActionForm form, final HttpServletRequest req,
-			final HttpServletResponse res) {
-	   UtilisateurService utilisateurService = new UtilisateurService();
-		final UtilisateurVO user = (UtilisateurVO) form;
+	public ActionForward execute(final ActionMapping mapping, final ActionForm form, final HttpServletRequest req, final HttpServletResponse res) {
+
+		String forward = FW_SUCCESS;
 		
+		IUserService utilisateurService = new UserService();
+		UserVO utilisateur = utilisateurService.getUser(((UserVO)form).getLogin());
 		
-		try {
-			utilisateurService.save(user);
+		if (utilisateur == null) {
+			utilisateurService.addUser((UserVO)form);
+		} else {
+			ActionErrors errors = new ActionErrors();
+			errors.add("utilisateur_unique", new ActionMessage("error.name.utilisateur_unique"));
+			saveErrors(req, errors);
+			forward = FW_FORM_ERROR;
 		}
-		catch (Exception e){
-			 System.out.println("fail2");
-		}
-	
-		
-		return mapping.findForward(FW_SUCCESS);
-			
+		return mapping.findForward(forward);
 	}
-	
-	
+
 }
