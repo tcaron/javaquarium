@@ -16,17 +16,17 @@ import com.javaquarium.util.PasswordHashUtils;
  */
 public class UserService implements IUserService {
 
-	private IUserDAO dao;
+	private IUserDAO userDao;
 
 	
 	public UserService() {
-		dao = new UserDAO();
+		userDao = new UserDAO();
 	}
 
 	
 	@Override
 	public List<UserVO> getAllUser() {
-		final List<UserDO> listUser = dao.getAllUser();
+		final List<UserDO> listUser = userDao.getAllUser();
 		List<UserVO> users = new ArrayList<UserVO>(listUser.size());
 		for (final UserDO user : listUser) {
 			users.add(map(user));
@@ -38,7 +38,7 @@ public class UserService implements IUserService {
 	@Override
 	public void addUser(UserVO user) {
 		UserDO u = this.map(user);
-		dao.addUser(u);
+		userDao.addUser(u);
 	}
 
 
@@ -75,13 +75,13 @@ public class UserService implements IUserService {
 	
 	@Override
 	public UserVO getUser(String login) {
-		return map(dao.getUser(login));
+		return map(userDao.getUser(login));
 	}
 
 	@Override
 	public boolean validateLogin(String login, String password) {
 		boolean returnVal = false;
-		UserDO databaseUser = dao.getUser(login);
+		UserDO databaseUser = userDao.getUser(login);
 		if (databaseUser != null) {
 			try {
 				returnVal = PasswordHashUtils.validatePassword(password, databaseUser.getPasswordHash());

@@ -10,6 +10,7 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 
+import com.javaquarium.business.IPoissonService;
 import com.javaquarium.business.IUserService;
 import com.javaquarium.business.UserService;
 import com.javaquarium.beans.web.UserVO;
@@ -23,13 +24,11 @@ public class InscriptionAction extends Action {
 	
 	private static final String FW_SUCCESS = "success";
 	private static final String FW_FORM_ERROR = "form_error";
-
+    private  IUserService utilisateurService ; 
 	@SuppressWarnings("deprecation")
 	public ActionForward execute(final ActionMapping mapping, final ActionForm form, final HttpServletRequest req, final HttpServletResponse res) {
 
 		String forward = FW_SUCCESS;
-		
-		IUserService utilisateurService = new UserService();
 		UserVO utilisateur = utilisateurService.getUser(((UserVO)form).getLogin());
 		
 		if (utilisateur == null) {
@@ -43,4 +42,11 @@ public class InscriptionAction extends Action {
 		return mapping.findForward(forward);
 	}
 
+	/**
+	 * @param poissonService
+	 *            the poissonService to set
+	 */
+	public void setUserService(IUserService utilisateurService) {
+		this.utilisateurService = utilisateurService;
+	}
 }
