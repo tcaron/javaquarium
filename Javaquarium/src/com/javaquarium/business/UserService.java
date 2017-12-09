@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.javaquarium.beans.data.UserDO;
 import com.javaquarium.beans.web.UserVO;
+import com.javaquarium.dao.IPoissonDAO;
 import com.javaquarium.dao.IUserDAO;
 import com.javaquarium.dao.UserDAO;
 import com.javaquarium.util.PasswordHashUtils;
@@ -94,4 +95,12 @@ public class UserService implements IUserService {
 		return returnVal;
 	}
 
+	/**
+	 * setter userDao
+	 * 
+	 * @param userDao
+	 */
+	public void setUserDAO(IUserDAO userDao) {
+		this.userDao = userDao;
+	}
 }
