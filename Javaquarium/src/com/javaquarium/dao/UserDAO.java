@@ -37,6 +37,8 @@ public class UserDAO implements IUserDAO {
 			Query req = session.createQuery("from UserDO where login= :myLogin");
 			req.setString("myLogin", login);
 			util = (UserDO) req.uniqueResult();
+			System.out.println("erreur");
+			System.exit(0);
 		} finally {
 			session.close();
 		}
@@ -45,8 +47,9 @@ public class UserDAO implements IUserDAO {
 
 
 	@Override
-	public void addUser(UserDO utilisateur) {
+	public void insert(UserDO utilisateur) {
 		Session session = HibernateUtils.getSession();
+
 		try {
 			Transaction transact = session.beginTransaction();
 			session.save(utilisateur);

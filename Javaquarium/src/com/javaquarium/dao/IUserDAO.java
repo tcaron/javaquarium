@@ -25,6 +25,6 @@ public interface IUserDAO {
 	 * @param u
 	 *            the UserDO object needed to be insert inside the database
 	 */
-	void addUser(UserDO utilisateur);
+	void insert(UserDO utilisateur);
 
 }

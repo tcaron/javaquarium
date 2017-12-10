@@ -29,11 +29,11 @@ public class InscriptionAction extends Action {
 	public ActionForward execute(final ActionMapping mapping, final ActionForm form, final HttpServletRequest req, final HttpServletResponse res) {
 
 		String forward = FW_SUCCESS;
-		UserVO utilisateur = utilisateurService.getUser(((UserVO)form).getLogin());
+		UserVO utilisateur = (UserVO)form ;
 		
-		if (utilisateur == null) {
-			utilisateurService.addUser((UserVO)form);
-		} else {
+		try {
+			utilisateurService.save(utilisateur);
+		} catch(Exception e) {
 			ActionErrors errors = new ActionErrors();
 			errors.add("utilisateur_unique", new ActionMessage("error.name.utilisateur_unique"));
 			saveErrors(req, errors);
@@ -43,8 +43,8 @@ public class InscriptionAction extends Action {
 	}
 
 	/**
-	 * @param poissonService
-	 *            the poissonService to set
+	 * @param UserService
+	 *            the UserService to set
 	 */
 	public void setUserService(IUserService utilisateurService) {
 		this.utilisateurService = utilisateurService;

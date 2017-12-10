@@ -20,11 +20,10 @@ public interface IUserService {
 	UserVO map(UserDO user);
 
 	
-	void addUser(UserVO user);
+	void save(UserVO user);
 
 	
 	UserVO getUser(String login);
 
-	
-	boolean validateLogin(String login, String password);
+
 }

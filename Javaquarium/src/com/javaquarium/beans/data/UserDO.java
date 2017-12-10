@@ -24,8 +24,8 @@ public class UserDO {
 	@Column(name = "login", nullable = true)
 	private String login;
 
-	@Column(name = "password_hash", nullable = true)
-	private String passwordHash;
+	@Column(name = "password", nullable = true)
+	private String password;
 	
 	/**
 	 * @return the id
@@ -60,15 +60,15 @@ public class UserDO {
 	/**
 	 * @return the password hash
 	 */
-	public String getPasswordHash() {
-		return passwordHash;
+	public String getPassword() {
+		return password;
 	}
 	
 	/**
 	 * @param hash the password hash to set
 	 */
-	public void setPasswordHash(String hash) {
-		this.passwordHash = hash;
+	public void setPassword(String hash) {
+		this.password = hash;
 	}
 
 }
