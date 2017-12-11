@@ -26,7 +26,6 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
 	
 	<action path="/register" input="/jsp/UC03_register.jsp" scope="request" name="RegisterForm" type="org.springframework.web.struts.DelegatingActionProxy">
 			<forward name="success" path="/jsp/UC00_login.jsp" redirect="true" />
-			<forward name="form_error" path="/jsp/UC03_register.jsp" redirect="true" />
 			<forward name="user_already_connected" path="/listerEspece.do" redirect="true" />
 		</action>
 	

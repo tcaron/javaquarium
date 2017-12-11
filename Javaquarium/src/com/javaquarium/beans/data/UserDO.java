@@ -21,10 +21,10 @@ public class UserDO {
 	@Column(name = "id")
 	private Integer id;
 
-	@Column(name = "login", nullable = true, unique = true)
+	@Column(name = "login", unique = true)
 	private String login;
 
-	@Column(name = "password", nullable = true)
+	@Column(name = "password")
 	private String password;
 	
 	/**
