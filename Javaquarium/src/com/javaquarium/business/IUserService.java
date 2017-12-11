@@ -26,4 +26,7 @@ public interface IUserService {
 	UserVO getUser(String login);
 
 
+	boolean validateLogin(String user);
+
+
 }

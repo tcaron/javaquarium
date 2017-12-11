@@ -6,7 +6,6 @@ import java.util.List;
 
 import com.javaquarium.beans.data.UserDO;
 import com.javaquarium.beans.web.UserVO;
-import com.javaquarium.dao.IPoissonDAO;
 import com.javaquarium.dao.IUserDAO;
 import com.javaquarium.dao.UserDAO;
 
@@ -77,4 +76,18 @@ public class UserService implements IUserService {
 	public void setUserDAO(IUserDAO userDao) {
 		this.userDao = userDao;
 	}
+
+
+	@Override
+	public boolean validateLogin(String user) {
+		UserDO databaseUser = userDao.getUser(user);
+	    if (databaseUser != null){
+	    	return true;
+	    } else {
+	    	return false;
+	    }
+	
+		
+	}
+	
 }

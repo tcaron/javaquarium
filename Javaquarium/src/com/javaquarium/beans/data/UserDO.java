@@ -21,7 +21,7 @@ public class UserDO {
 	@Column(name = "id")
 	private Integer id;
 
-	@Column(name = "login", nullable = true)
+	@Column(name = "login", nullable = true, unique = true)
 	private String login;
 
 	@Column(name = "password", nullable = true)

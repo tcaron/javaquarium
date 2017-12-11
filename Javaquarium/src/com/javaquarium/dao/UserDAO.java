@@ -54,7 +54,8 @@ public class UserDAO implements IUserDAO {
 			Transaction transact = session.beginTransaction();
 			session.save(utilisateur);
 			transact.commit();
-		} finally {
+		}
+		 finally {
 			session.close();
 		}
 	}
