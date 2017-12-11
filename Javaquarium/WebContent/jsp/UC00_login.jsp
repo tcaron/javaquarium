@@ -28,7 +28,7 @@
 			</label>
 			<div class="col-sm-5">
 				<html:text styleClass="form-control" styleId="login"
-					property="utilisateur" />
+					property="login" />
 			</div>
 		</div>
 
@@ -38,7 +38,7 @@
 			</label>
 			<div class="col-sm-5">
 				<html:password styleClass="form-control" styleId="password"
-					property="motDePasse" />
+					property="password" />
 			</div>
 		</div>
 		<div class="form-group">

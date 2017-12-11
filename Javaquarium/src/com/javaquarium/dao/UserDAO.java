@@ -30,19 +30,17 @@ public class UserDAO implements IUserDAO {
 
 	
 	@Override
-	public UserDO getUser(String login) {
+	public UserDO find(String login) {
 		Session session = HibernateUtils.getSession();
-		UserDO util = null;
+		UserDO user ;
 		try {
-			Query req = session.createQuery("from UserDO where login= :myLogin");
-			req.setString("myLogin", login);
-			util = (UserDO) req.uniqueResult();
-			System.out.println("erreur");
-			System.exit(0);
+			Query req = session.createQuery("from UserDO where login= :username");
+			req.setString("username", login);
+			user = (UserDO) req.uniqueResult();
 		} finally {
 			session.close();
 		}
-		return util;
+		return user;
 	}
 
 

@@ -25,7 +25,7 @@
 	<center>
 		<h3>
 			<bean:message key="message.bienvenue" />
-			<bean:write name="utilisateur" property="utilisateur" />
+			<bean:write name="user" scope="session" />
 		</h3>
 		<bean:message key="message.listerespece.infos"/>
 		<a class="btn btn-success btn-xs" href=""> <bean:message key="message.listerespeces.sauvegarder" /></a>				

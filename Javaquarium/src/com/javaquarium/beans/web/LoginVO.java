@@ -19,60 +19,53 @@ public class LoginVO extends ActionForm {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String utilisateur;
-	private String motDePasse;
+	private String login;
+	private String password;
 
-	/**
-	 * @return the utilisateur
-	 */
-	public String getUtilisateur() {
-		return utilisateur;
-	}
-
-	/**
-	 * @param utilisateur
-	 *            the utilisateur to set
-	 */
-	public void setUtilisateur(String utilisateur) {
-		this.utilisateur = utilisateur;
-	}
-
-	/**
-	 * @return the motDePasse
-	 */
-	public String getMotDePasse() {
-		return motDePasse;
-	}
-
-	/**
-	 * @param motDePasse
-	 *            the motDePasse to set
-	 */
-	public void setMotDePasse(String motDePasse) {
-		this.motDePasse = motDePasse;
-	}
+	
 
 	@Override
 	public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
 
 		final ActionErrors errors = new ActionErrors();
 
-		if (StringUtils.isEmpty(getUtilisateur())) {
+		if (StringUtils.isEmpty(getLogin())) {
 			errors.add("utilisateur", new ActionMessage("errors.field.empty", "utilisateur"));
 		}
 
-		if (StringUtils.isEmpty(getMotDePasse())) {
+		if (StringUtils.isEmpty(getPassword())) {
 			errors.add("password1", new ActionMessage("errors.field.empty", "mot de passe"));
 
 		}
 
-		if (StringUtils.length(getMotDePasse()) < 4) {
+		if (StringUtils.length(getPassword()) < 4) {
 			errors.add("password2", new ActionMessage("errors.field.minlength", "mot de passe"));
 		}
-		 // va récupéré le nom de l'utilisateur inscrit dans le formulaire
-		request.getSession().setAttribute("utilisateur", this);
-
 		return errors;
+	}
+
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
+
+	public String getLogin() {
+		return login;
+	}
+
+
+
+	public void setLogin(String login) {
+		this.login = login;
 	}
 
 }

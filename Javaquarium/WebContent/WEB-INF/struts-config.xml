@@ -21,7 +21,7 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
 	<!-- path /pagelogin lié au form de la jsp UC00_login qui a l'action à "/pageLogin" , de portée type requête, nom loginForm qui sera lié à un bean au dessus, lié à LoginAction.java -->
 	<action path="/pageLogin"  input="/jsp/UC00_login.jsp" scope="request" name="loginForm" type="org.springframework.web.struts.DelegatingActionProxy">
 		<forward name="success" path="/listerEspece.do" redirect="true"/>
-
+		<forward name="error" path="/jsp/UC00_login.jsp"  redirect="false"/>
 	</action>
 	
 	<action path="/register" input="/jsp/UC03_register.jsp" scope="request" name="RegisterForm" type="org.springframework.web.struts.DelegatingActionProxy">

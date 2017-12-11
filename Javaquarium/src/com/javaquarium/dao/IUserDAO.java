@@ -19,7 +19,7 @@ public interface IUserDAO {
 	 *            the name of the desired poisson object
 	 * @return the corresponding PoissonDO object
 	 */
-	UserDO getUser(String name);
+	UserDO find(String name);
 
 	/**
 	 * @param u

@@ -26,7 +26,10 @@
        <property name="poissonService"> <ref bean="poissonService"/></property>
    </bean>
   
-  <bean name="/pageLogin" class="com.javaquarium.action.LoginAction" singleton="true"></bean>
+  <bean name="/pageLogin" class="com.javaquarium.action.LoginAction" singleton="true">
+   <property name="userService"> <ref bean="userService"/></property>
+  </bean>
+  
   <bean name="/removeEspece" class="com.javaquarium.action.RemoveAction" singleton="true">
        <property name="poissonService"> <ref bean="poissonService"/></property>
    </bean>

@@ -64,7 +64,8 @@ public class UserService implements IUserService {
 	
 	@Override
 	public UserVO getUser(String login) {
-		return map(userDao.getUser(login));
+	    UserVO user = map(userDao.find(login));
+		return user;
 	}
 
 	
@@ -77,18 +78,5 @@ public class UserService implements IUserService {
 		this.userDao = userDao;
 	}
 
-
-	@Override
-	public boolean validateLogin(String login,String password) {
-		
-		UserDO databaseUser = userDao.getUser(login);
-	    if (databaseUser != null){
-	    	return true;
-	    } else {
-	    	return false;
-	    }
-	
-		
-	}
 	
 }
