@@ -79,8 +79,9 @@ public class UserService implements IUserService {
 
 
 	@Override
-	public boolean validateLogin(String user) {
-		UserDO databaseUser = userDao.getUser(user);
+	public boolean validateLogin(String login,String password) {
+		
+		UserDO databaseUser = userDao.getUser(login);
 	    if (databaseUser != null){
 	    	return true;
 	    } else {

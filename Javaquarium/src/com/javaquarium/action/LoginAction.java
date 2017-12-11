@@ -36,7 +36,7 @@ public class LoginAction extends Action {
 		
 		final LoginVO loginVO = (LoginVO) form; 
 	
-		if (utilisateurService.validateLogin(user)){
+		if (utilisateurService.validateLogin(login,password)){
 			
 			 req.getSession().setAttribute(ListerEspeceAction.SESSION_REQUEST, loginVO.getUtilisateur());
 
