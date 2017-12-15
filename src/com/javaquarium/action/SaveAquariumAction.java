@@ -1,5 +1,6 @@
 package com.javaquarium.action;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,12 +24,18 @@ public class SaveAquariumAction extends Action {
 	public ActionForward execute(final ActionMapping mapping, final ActionForm form, final HttpServletRequest req,
 			final HttpServletResponse res) {
 
+		
+		try{
 		@SuppressWarnings("unchecked")
 		List<PoissonDO> list = (List<PoissonDO>)req.getSession().getAttribute(ConstantsUtils.AQUARIUM_LIST);
-		List<PoissonDO> list2 = list;
-		userAquariumService.save((UserDO) req.getSession().getAttribute(ConstantsUtils.REQ_USER_DO), list2);
-		req.getSession().setAttribute(ConstantsUtils.AQUARIUM_LIST, list2);
-		req.getSession().setAttribute(ConstantsUtils.AQUARIUM_COUNTER, list2.size());
+		userAquariumService.save((UserDO) req.getSession().getAttribute(ConstantsUtils.REQ_USER_DO), list);	
+		req.getSession().setAttribute(ConstantsUtils.AQUARIUM_LIST, list);
+		req.getSession().setAttribute(ConstantsUtils.AQUARIUM_COUNTER, list.size());
+		}
+		catch(ClassCastException e){
+			return mapping.findForward(ConstantsUtils.FW_ERROR);
+		}
+		
 		
 		return mapping.findForward(ConstantsUtils.FW_SUCCESS);
 

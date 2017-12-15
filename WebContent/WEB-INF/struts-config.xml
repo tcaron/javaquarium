@@ -47,26 +47,26 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
 
 		<action path="/emptyAquarium" scope="request"
 			type="org.springframework.web.struts.DelegatingActionProxy">
-			<forward name="success" path="listerEspece.do" redirect="true" />
-			<forward name="error" path="listerEspece.do" redirect="false" />
+			<forward name="success" path="/listerEspece.do" redirect="true" />
+			<forward name="error" path="/listerEspece.do" redirect="false" />
 		</action>
 
 		<action path="/addAquarium" scope="request"
 			type="org.springframework.web.struts.DelegatingActionProxy">
-			<forward name="success" path="listerEspece.do" redirect="true" />
-			<forward name="error" path="listerEspece.do" redirect="false" />
+			<forward name="success" path="/listerEspece.do" redirect="true" />
+			<forward name="error" path="/listerEspece.do" redirect="false" />
 		</action>
 
 		<action path="/removeAquarium" scope="request"
 			type="org.springframework.web.struts.DelegatingActionProxy">
-			<forward name="success" path="listerEspece.do" redirect="true" />
-			<forward name="error" path="listerEspece.do" redirect="false" />
+			<forward name="success" path="/listerEspece.do" redirect="true" />
+			<forward name="error" path="/listerEspece.do" redirect="false" />
 		</action>
 
 		<action path="/saveAquarium" scope="request"
 			type="org.springframework.web.struts.DelegatingActionProxy">
-			<forward name="success" path="listerEspece.do" redirect="true" />
-			<forward name="error" path="listerEspece.do" redirect="false" />
+			<forward name="success" path="/listerEspece.do" redirect="true" />
+			<forward name="error" path="/listerEspece.do" redirect="false" />
 		</action>
 
 	</action-mappings>
