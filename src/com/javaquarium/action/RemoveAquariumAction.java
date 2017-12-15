@@ -12,10 +12,12 @@ import org.apache.struts.action.ActionMapping;
 
 import com.javaquarium.beans.data.PoissonDO;
 import com.javaquarium.business.IPoissonService;
+import com.javaquarium.business.IUserAquariumService;
 import com.javaquarium.util.ConstantsUtils;
 
 public class RemoveAquariumAction extends Action {
 	private IPoissonService poissonService;
+	private IUserAquariumService userAquariumService;
 	@SuppressWarnings("deprecation")
 	public ActionForward execute(final ActionMapping mapping, final ActionForm form, final HttpServletRequest req,
 			final HttpServletResponse res) {
@@ -25,10 +27,15 @@ public class RemoveAquariumAction extends Action {
 		
 		@SuppressWarnings("unchecked")
 		List<PoissonDO> list = (List<PoissonDO>)req.getSession().getAttribute(ConstantsUtils.AQUARIUM_LIST);
-		System.out.println(poisson.getId());
-		System.out.println(list.contains(poisson));
+		
+		for (int i = 0;i<list.size();i++){
+			if(list.get(i).getId() == poisson.getId())
+			{
+				list.remove(i); 
+				break;
+			}	
+		}
 	
-		list.remove(poisson);
 		req.getSession().setAttribute(ConstantsUtils.AQUARIUM_LIST, list);
 		req.getSession().setAttribute(ConstantsUtils.AQUARIUM_COUNTER, list.size());
 	
@@ -39,10 +46,19 @@ public class RemoveAquariumAction extends Action {
 	}
 
 	/**
+	 * @param UserService
+	 *            the UserService to set
+	 */
+	public void setUserAquariumService(IUserAquariumService userAquariumService) {
+		this.userAquariumService = userAquariumService;
+	}
+	
+	/**
 	 * @param poissonService
 	 *            the poissonService to set
 	 */
 	public void setPoissonService(IPoissonService poissonService) {
 		this.poissonService = poissonService;
 	}
+
 }

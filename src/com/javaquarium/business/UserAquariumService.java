@@ -1,5 +1,6 @@
 package com.javaquarium.business;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.javaquarium.beans.data.PoissonDO;
@@ -13,9 +14,13 @@ public class UserAquariumService implements IUserAquariumService {
 
 	@Override
 	public List<PoissonDO> getUserAquarium(UserDO user) {
-	
-		 return aquariumDAO.list(user);
-	
+	  List<PoissonDO> list = new ArrayList<PoissonDO>();
+	  List<PoissonDO> l =aquariumDAO.list(user);
+	  
+	  for ( PoissonDO p : list )
+		  l.add(p);
+	  
+	  return l;
 	}
 
 	public UserAquariumService() {

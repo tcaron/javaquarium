@@ -62,13 +62,6 @@
 		</property>
 	</bean>
 
-	<bean name="/removeEspece" class="com.javaquarium.action.RemoveAction"
-		singleton="true">
-		<property name="poissonService">
-			<ref bean="poissonService" />
-		</property>
-	</bean>
-
 	<bean name="/emptyAquarium" class="com.javaquarium.action.EmptyAquariumAction"
 		singleton="true">
 		<property name="userAquariumService">
@@ -85,17 +78,23 @@
 			<ref bean="poissonService" />
 		</property>
 	</bean>
-	
+
 	<bean name="/removeAquarium" class="com.javaquarium.action.RemoveAquariumAction"
 		singleton="true">
+		<property name="userAquariumService">
+			<ref bean="userAquariumService" />
+		</property>
 		<property name="poissonService">
 			<ref bean="poissonService" />
 		</property>
 	</bean>
-	
-	
+
+
 	<bean name="/saveAquarium" class="com.javaquarium.action.SaveAquariumAction"
 		singleton="true">
+			<property name="poissonService">
+			<ref bean="poissonService" />
+		</property>
 		<property name="userAquariumService">
 			<ref bean="userAquariumService" />
 		</property>

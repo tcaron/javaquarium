@@ -1,5 +1,6 @@
 package com.javaquarium.action;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -36,12 +37,13 @@ public class ListerEspeceAction extends Action {
 			final HttpServletResponse res) {
 
 		final List<PoissonVO> poissonVO = poissonService.findAll();
-
 		req.getSession().setAttribute(SESSION_REQUEST, poissonVO);
 		
 		List<PoissonDO> list = userAquariumService.getUserAquarium((UserDO) req.getSession().getAttribute(REQ_USER_DO));
-		
+	
+
 		if ( req.getSession().getAttribute(AQUARIUM_LIST) == null){
+	
 		req.getSession().setAttribute(AQUARIUM_LIST, list);
 		req.getSession().setAttribute(AQUARIUM_COUNTER, list.size());
 		}
