@@ -1,5 +1,6 @@
 package com.javaquarium.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -23,12 +24,15 @@ public class UserAquariumDAO implements IUserAquariumDAO {
 		q.setParameter("user", user);
 
 		@SuppressWarnings("rawtypes")
-		final List<PoissonDO> list = (List) q.list();
-
+		final List<UserAquariumDO> list = (List) q.list();
+		final List<PoissonDO> listPoisson = new ArrayList<PoissonDO>();
 		t.commit();
 		s.close();
-
-		return list;
+		for (UserAquariumDO userq : list){
+			listPoisson.add(userq.getPoisson());
+		}
+		
+		return listPoisson;
 
 	}
 
@@ -58,15 +62,14 @@ public class UserAquariumDAO implements IUserAquariumDAO {
 		final Session s = HibernateUtils.getSession();
 		final Transaction t = s.beginTransaction();
 		final IUserDAO userDAO = new UserDAO();
-		 
-		user = userDAO.find(user.getLogin());
+		
+		user= userDAO.find(user.getLogin());
 		try {
 			deleteAquarium(user);
 			for(PoissonDO poisson : list){
-				final UserAquariumDO userAquariumDO = new UserAquariumDO();
+			final UserAquariumDO userAquariumDO = new UserAquariumDO();	
 				userAquariumDO.setUser(user);
 				userAquariumDO.setPoisson(poisson);
-				System.out.println(poisson);
 				s.merge(userAquariumDO);
 				
 			}

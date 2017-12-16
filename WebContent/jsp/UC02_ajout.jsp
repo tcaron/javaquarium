@@ -76,7 +76,7 @@
 				<bean:message key="message.ajout.button.name.reset" />
 			</html:reset>
 			<a class="btn btn-primary col-sm-offset-1"
-				href="/Javaquarium/jsp/UC01_especes.jsp"> <bean:message
+				href="/Javaquarium/listerEspece.do"> <bean:message
 					key="message.listerespece.title.aquarium" />
 			</a>
 
