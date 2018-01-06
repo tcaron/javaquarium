@@ -11,7 +11,7 @@ import com.javaquarium.util.HibernateUtils;
 
 /**
  * 
- * @author alex
+ * @author alex data access
  *
  */
 public class PoissonDAO implements IPoissonDAO {

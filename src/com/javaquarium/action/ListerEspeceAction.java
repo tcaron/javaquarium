@@ -1,6 +1,5 @@
 package com.javaquarium.action;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,18 +16,14 @@ import com.javaquarium.beans.web.PoissonVO;
 import com.javaquarium.business.IPoissonService;
 import com.javaquarium.business.IUserAquariumService;
 import com.javaquarium.business.IUserService;
+import com.javaquarium.util.ConstantsUtils;
 
 /**
  * @author Alex Classic Action
  */
 public class ListerEspeceAction extends Action {
 
-	private static final String FW_SUCCESS = "success";
-	public static final String SESSION_REQUEST = "requestTableauPoisson";
-	private static final String REQ_USER = "user";
-	private static final String REQ_USER_DO = "user_do";
-	private static final String AQUARIUM_COUNTER = "aquarium_size";
-	private static final String AQUARIUM_LIST = "aquarium_list";
+	public static final String SESSION_REQUEST = ConstantsUtils.SESSION_REQUEST;
 	private IPoissonService poissonService;
 	private IUserService utilisateurService;
 	private IUserAquariumService userAquariumService;
@@ -36,21 +31,26 @@ public class ListerEspeceAction extends Action {
 	public ActionForward execute(final ActionMapping mapping, final ActionForm form, final HttpServletRequest req,
 			final HttpServletResponse res) {
 
-		final List<PoissonVO> poissonVO = poissonService.findAll();
-		req.getSession().setAttribute(SESSION_REQUEST, poissonVO);
+		if (req.getSession().getAttribute(ConstantsUtils.REQ_USER) == null) {
+			return mapping.findForward(ConstantsUtils.FW_ERROR);
+		}
 		
-		List<PoissonDO> list = userAquariumService.getUserAquarium((UserDO) req.getSession().getAttribute(REQ_USER_DO));
+		else {
+		final List<PoissonVO> poissonVO = poissonService.findAll();
+		req.getSession().setAttribute(ConstantsUtils.SESSION_REQUEST, poissonVO);
+		
+		List<PoissonDO> list = userAquariumService.getUserAquarium((UserDO) req.getSession().getAttribute(ConstantsUtils.REQ_USER_DO));
 	
 
-		if ( req.getSession().getAttribute(AQUARIUM_LIST) == null){
+		if ( req.getSession().getAttribute(ConstantsUtils.AQUARIUM_LIST) == null){
 	
-		req.getSession().setAttribute(AQUARIUM_LIST, list);
-		req.getSession().setAttribute(AQUARIUM_COUNTER, list.size());
+		req.getSession().setAttribute(ConstantsUtils.AQUARIUM_LIST, list);
+		req.getSession().setAttribute(ConstantsUtils.AQUARIUM_COUNTER, list.size());
 		}
 	
 
-		return mapping.findForward(FW_SUCCESS);
-
+		return mapping.findForward(ConstantsUtils.FW_SUCCESS);
+		}
 	}
 
 	/**
@@ -70,8 +70,8 @@ public class ListerEspeceAction extends Action {
 	}
 
 	/**
-	 * @param UserService
-	 *            the UserService to set
+	 * @param UserAquariumService
+	 *            the UserAquariumService to set
 	 */
 	public void setUserAquariumService(IUserAquariumService userAquariumService) {
 		this.userAquariumService = userAquariumService;

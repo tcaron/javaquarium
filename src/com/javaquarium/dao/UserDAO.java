@@ -10,12 +10,12 @@ import com.javaquarium.beans.data.UserDO;
 import com.javaquarium.util.HibernateUtils;
 
 /**
- * @author Alex Classic Action
+ * 
+ * @author alex data access
+ *
  */
-
 public class UserDAO implements IUserDAO {
 
-	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<UserDO> getAllUser() {
@@ -28,11 +28,10 @@ public class UserDAO implements IUserDAO {
 		}
 	}
 
-	
 	@Override
 	public UserDO find(String login) {
 		Session session = HibernateUtils.getSession();
-		UserDO user ;
+		UserDO user;
 		try {
 			Query req = session.createQuery("from UserDO where login= :username");
 			req.setString("username", login);
@@ -43,7 +42,6 @@ public class UserDAO implements IUserDAO {
 		return user;
 	}
 
-
 	@Override
 	public void insert(UserDO utilisateur) {
 		Session session = HibernateUtils.getSession();
@@ -52,8 +50,7 @@ public class UserDAO implements IUserDAO {
 			Transaction transact = session.beginTransaction();
 			session.save(utilisateur);
 			transact.commit();
-		}
-		 finally {
+		} finally {
 			session.close();
 		}
 	}

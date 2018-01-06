@@ -8,9 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * @author Alex Classic Action
+ * @author Alex Classic Data object
  */
-
 
 @Entity
 @Table(name = "poisson")
@@ -136,13 +135,13 @@ public class PoissonDO {
 	public Integer getId() {
 		return id;
 	}
-	
+
 	/**
-	* @param id
+	 * @param id
 	 *            the id to set
 	 */
 	public void setId(Integer id) {
-		this.id =  id;
+		this.id = id;
 	}
 
 	public PoissonDO() {

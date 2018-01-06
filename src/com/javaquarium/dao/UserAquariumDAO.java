@@ -12,6 +12,11 @@ import com.javaquarium.beans.data.UserAquariumDO;
 import com.javaquarium.beans.data.UserDO;
 import com.javaquarium.util.HibernateUtils;
 
+/**
+ * 
+ * @author alex data access
+ *
+ */
 public class UserAquariumDAO implements IUserAquariumDAO {
 
 	public List<PoissonDO> list(UserDO user) {
@@ -28,10 +33,10 @@ public class UserAquariumDAO implements IUserAquariumDAO {
 		final List<PoissonDO> listPoisson = new ArrayList<PoissonDO>();
 		t.commit();
 		s.close();
-		for (UserAquariumDO userq : list){
+		for (UserAquariumDO userq : list) {
 			listPoisson.add(userq.getPoisson());
 		}
-		
+
 		return listPoisson;
 
 	}
@@ -62,24 +67,24 @@ public class UserAquariumDAO implements IUserAquariumDAO {
 		final Session s = HibernateUtils.getSession();
 		final Transaction t = s.beginTransaction();
 		final IUserDAO userDAO = new UserDAO();
-		
-		user= userDAO.find(user.getLogin());
+
+		user = userDAO.find(user.getLogin());
 		try {
 			deleteAquarium(user);
-			for(PoissonDO poisson : list){
-			final UserAquariumDO userAquariumDO = new UserAquariumDO();	
+			for (PoissonDO poisson : list) {
+				final UserAquariumDO userAquariumDO = new UserAquariumDO();
 				userAquariumDO.setUser(user);
 				userAquariumDO.setPoisson(poisson);
 				s.merge(userAquariumDO);
-				
+
 			}
-			
+
 			t.commit();
 		}
-		
-		finally{
+
+		finally {
 			s.close();
 		}
-		
+
 	}
 }

@@ -18,6 +18,7 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
 		<action path="/listerEspece"
 			type="org.springframework.web.struts.DelegatingActionProxy">
 			<forward name="success" path="/jsp/UC01_especes.jsp" />
+			<forward name="error" path="/jsp/UC00_login.jsp" redirect="true" />
 		</action>
 
 		<!-- path /pagelogin lié au form de la jsp UC00_login qui a l'action à 
@@ -26,14 +27,14 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
 		<action path="/pageLogin" input="/jsp/UC00_login.jsp" scope="request"
 			name="loginForm" type="org.springframework.web.struts.DelegatingActionProxy">
 			<forward name="success" path="/listerEspece.do" redirect="true" />
+			<forward name="redirect" path="/listerEspece.do" redirect="true" />
 			<forward name="error" path="/jsp/UC00_login.jsp" redirect="false" />
 		</action>
 
 		<action path="/register" input="/jsp/UC03_register.jsp" scope="request"
 			name="RegisterForm" type="org.springframework.web.struts.DelegatingActionProxy">
 			<forward name="success" path="/jsp/UC00_login.jsp" redirect="true" />
-			<forward name="user_already_connected" path="/listerEspece.do"
-				redirect="true" />
+			<forward name="error" path="/listerEspece.do" redirect="true" />
 		</action>
 
 
@@ -43,18 +44,19 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
 			scope="request" name="poissonForm"
 			type="org.springframework.web.struts.DelegatingActionProxy">
 			<forward name="success" path="listerEspece.do" redirect="true" />
+			<forward name="error" path="/jsp/UC00_login.jsp" redirect="true" />
 		</action>
 
 		<action path="/emptyAquarium" scope="request"
 			type="org.springframework.web.struts.DelegatingActionProxy">
 			<forward name="success" path="/listerEspece.do" redirect="true" />
-			<forward name="error" path="/listerEspece.do" redirect="false" />
+			<forward name="error" path="/jsp/UC00_login.js" redirect="true" />
 		</action>
 
 		<action path="/addAquarium" scope="request"
 			type="org.springframework.web.struts.DelegatingActionProxy">
 			<forward name="success" path="/listerEspece.do" redirect="true" />
-			<forward name="error" path="/listerEspece.do" redirect="false" />
+			<forward name="error" path="/jsp/UC00_login.jsp" redirect="true" />
 		</action>
 
 		<action path="/removeAquarium" scope="request"
@@ -69,6 +71,10 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
 			<forward name="error" path="/listerEspece.do" redirect="false" />
 		</action>
 
+		<action path="/logout" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="success" path="/jsp/UC00_login.jsp" redirect="true" />
+		</action>
 	</action-mappings>
 
 	<message-resources parameter="ApplicationResources" />

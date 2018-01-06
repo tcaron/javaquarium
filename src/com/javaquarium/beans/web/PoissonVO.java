@@ -10,13 +10,13 @@ import org.apache.struts.action.ActionMessage;
 
 /**
  * 
- * @author alex
+ * @author alex classic VO Crud
  *
  */
 public class PoissonVO extends ActionForm {
 
 	public static final String SEPARATOR_POISSON = "x";
-	
+
 	private static final long serialVersionUID = -123456789L;
 	private Integer id;
 	private String espece;
@@ -136,38 +136,36 @@ public class PoissonVO extends ActionForm {
 		this.nom = nom;
 	}
 
-	
 	@Override
-	public ActionErrors validate(ActionMapping mapping, HttpServletRequest request){
-		
-			final ActionErrors errors = new ActionErrors();
-		
-		if(StringUtils.isEmpty(getNom())){
+	public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
+
+		final ActionErrors errors = new ActionErrors();
+
+		if (StringUtils.isEmpty(getNom())) {
 			errors.add("nom", new ActionMessage("errors.field.nom", "Nom"));
 		}
-		
-		if(StringUtils.isEmpty(getDescription())){
+
+		if (StringUtils.isEmpty(getDescription())) {
 			errors.add("description", new ActionMessage("errors.field.description", "Description"));
 		}
-		
-		if(StringUtils.isEmpty(getCouleur())){
+
+		if (StringUtils.isEmpty(getCouleur())) {
 			errors.add("couleur", new ActionMessage("errors.field.couleur", "Couleur"));
 		}
-		
-		if(StringUtils.isEmpty(getPrix().toString())){
+
+		if (StringUtils.isEmpty(getPrix().toString())) {
 			errors.add("prix", new ActionMessage("errors.field.prix", "Prix"));
 		}
-		
-		if (!getDimension().matches("[0-9]+x[0-9]+$"))
-		{
+
+		if (!getDimension().matches("[0-9]+x[0-9]+$")) {
 			errors.add("dimension_regex", new ActionMessage("errors.field.match_regex", "Dimension"));
 		}
-		
-		if (StringUtils.isEmpty(getDimension().toString())){
+
+		if (StringUtils.isEmpty(getDimension().toString())) {
 			errors.add("dimension", new ActionMessage("errors.field.empty_dimension", "Dimension"));
-			
+
 		}
 		return errors;
-		
+
 	}
 }

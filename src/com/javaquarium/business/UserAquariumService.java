@@ -1,6 +1,5 @@
 package com.javaquarium.business;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.javaquarium.beans.data.PoissonDO;
@@ -8,14 +7,18 @@ import com.javaquarium.beans.data.UserDO;
 import com.javaquarium.dao.IUserAquariumDAO;
 import com.javaquarium.dao.UserAquariumDAO;
 
+/**
+ * @author Thomas Service pour la gestion de l'aquarium utiliasteur
+ *
+ */
 public class UserAquariumService implements IUserAquariumService {
 
 	private IUserAquariumDAO aquariumDAO;
 
 	@Override
 	public List<PoissonDO> getUserAquarium(UserDO user) {
-	  return aquariumDAO.list(user);
-	 
+		return aquariumDAO.list(user);
+
 	}
 
 	public UserAquariumService() {
@@ -33,24 +36,23 @@ public class UserAquariumService implements IUserAquariumService {
 
 	@Override
 	public void addPoissonAquarium(List<PoissonDO> list, PoissonDO poisson) {
-		list.add(poisson);	
+		list.add(poisson);
 	}
 
 	@Override
 	public void save(UserDO user, List<PoissonDO> list) {
-		aquariumDAO.saveAquarium(user, list);	
+		aquariumDAO.saveAquarium(user, list);
 	}
 
 	@Override
 	public void emptyAquarium(UserDO user) {
-		aquariumDAO.deleteAquarium(user);	
+		aquariumDAO.deleteAquarium(user);
 	}
 
 	@Override
-	public void removePoissonAquarium(List<PoissonDO> list,PoissonDO poisson) {
+	public void removePoissonAquarium(List<PoissonDO> list, PoissonDO poisson) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
-	
 }

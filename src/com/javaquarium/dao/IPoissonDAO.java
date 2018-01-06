@@ -6,16 +6,37 @@ import com.javaquarium.beans.data.PoissonDO;
 
 /**
  * 
- * @author alex
+ * @author alex Poisson data access
  *
  */
 public interface IPoissonDAO {
 
+	/**
+	 * Insert un poisson en base
+	 * 
+	 * @param poisson
+	 */
 	void insert(PoissonDO poisson);
 
+	/**
+	 * Supprime un Poisson en base
+	 * 
+	 * @param code
+	 */
 	void delete(Integer code);
 
+	/**
+	 * retourne la liste des poissons
+	 * 
+	 * @return
+	 */
 	List<PoissonDO> list();
-    
-	PoissonDO find (Integer id);
+
+	/**
+	 * retourne un poisson en fonction de son id
+	 * 
+	 * @param id
+	 * @return
+	 */
+	PoissonDO find(Integer id);
 }

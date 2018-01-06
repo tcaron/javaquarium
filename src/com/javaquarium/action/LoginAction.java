@@ -12,21 +12,15 @@ import org.apache.struts.action.ActionMessage;
 
 import com.javaquarium.beans.web.LoginVO;
 import com.javaquarium.beans.web.UserVO;
-import com.javaquarium.business.IPoissonService;
 import com.javaquarium.business.IUserService;
-import com.javaquarium.business.UserService;
+import com.javaquarium.util.ConstantsUtils;
 
 /**
  * @author Alex Classic Action
  */
 public class LoginAction extends Action {
 
-	private static final String FW_SUCCESS = "success";
-	private static final String FW_ERROR = "error";
-	private static final String REQ_USER = "user";
-	private static final String REQ_USER_DO = "user_do";
 	private IUserService utilisateurService;
-	private IPoissonService poissonService;
 
 	@SuppressWarnings("deprecation")
 	public ActionForward execute(final ActionMapping mapping, final ActionForm form, final HttpServletRequest req,
@@ -34,6 +28,9 @@ public class LoginAction extends Action {
 
 		LoginVO user = (LoginVO) form;
 		ActionErrors errors = new ActionErrors();
+		if (req.getSession().getAttribute(ConstantsUtils.REQ_USER) != null) {
+			req.getSession().invalidate();
+		}
 
 		try {
 			UserVO userLogin = utilisateurService.getUser(user.getLogin());
@@ -41,19 +38,20 @@ public class LoginAction extends Action {
 			if (!userLogin.getPassword().equals(user.getPassword())) {
 				errors.add("wrong_password", new ActionMessage("error.login.wrong_password"));
 				saveErrors(req, errors);
-				return mapping.findForward(FW_ERROR);
+				return mapping.findForward(ConstantsUtils.FW_ERROR);
 			} else
-				req.getSession().setAttribute(REQ_USER, user.getLogin());
-				req.getSession().setAttribute(REQ_USER_DO, utilisateurService.map(userLogin));
+				req.getSession().setAttribute(ConstantsUtils.REQ_USER, user.getLogin());
+			req.getSession().setAttribute(ConstantsUtils.REQ_USER_DO, utilisateurService.map(userLogin));
 		}
 
 		catch (NullPointerException e) {
 			errors.add("unknow_user", new ActionMessage("error.login.unknow_user"));
 			saveErrors(req, errors);
-			return mapping.findForward(FW_ERROR);
+			return mapping.findForward(ConstantsUtils.FW_ERROR);
 		}
 
-		return mapping.findForward(FW_SUCCESS);
+		return mapping.findForward(ConstantsUtils.FW_SUCCESS);
+
 	}
 
 	/**
@@ -64,7 +62,4 @@ public class LoginAction extends Action {
 		this.utilisateurService = utilisateurService;
 	}
 
-	public void setPoissonService(IPoissonService poissonService) {
-		this.poissonService = poissonService;
-	}
 }

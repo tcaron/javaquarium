@@ -9,7 +9,7 @@ import com.javaquarium.dao.IPoissonDAO;
 
 /**
  * 
- * @author alex
+ * @author alex Service pour la gestion des poissons
  *
  */
 public class PoissonService implements IPoissonService {
@@ -23,10 +23,11 @@ public class PoissonService implements IPoissonService {
 		// Liste qui va contenir des poissons de type VO (web)
 		final List<PoissonVO> listePoisson = new ArrayList<PoissonVO>();
 
-		// Création d'une liste de PoissonDO (le bean de type bdd), on va faire la liste des élément de la base de données
-	
+		// Création d'une liste de PoissonDO (le bean de type bdd), on va faire
+		// la liste des élément de la base de données
+
 		final List<PoissonDO> poissonDO = poissonDAO.list();
-		
+
 		for (final PoissonDO p : poissonDO) {
 			// instanciation du bean (le bean de type web)
 			final PoissonVO poissonVO = map(p);
@@ -50,7 +51,7 @@ public class PoissonService implements IPoissonService {
 	public void save(PoissonVO poissonvo) {
 
 		final PoissonDO poissonDO = map(poissonvo);
-		
+
 		poissonDAO.insert(poissonDO);
 
 	}
@@ -70,8 +71,9 @@ public class PoissonService implements IPoissonService {
 	}
 
 	private PoissonVO map(final PoissonDO p) {
-		// On va récupéré les poissons de la base de données (DAO -> DO -> getters du  DO) qu'on va insérer dans la partie web (->poissonVO)
-		
+		// On va récupéré les poissons de la base de données (DAO -> DO ->
+		// getters du DO) qu'on va insérer dans la partie web (->poissonVO)
+
 		final PoissonVO poissonVO = new PoissonVO();
 
 		poissonVO.setNom(p.getNom());

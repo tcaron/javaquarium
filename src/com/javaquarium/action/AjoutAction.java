@@ -13,13 +13,12 @@ import org.hibernate.exception.ConstraintViolationException;
 
 import com.javaquarium.beans.web.PoissonVO;
 import com.javaquarium.business.IPoissonService;
+import com.javaquarium.util.ConstantsUtils;
 
 /**
  * @author Alex Classic Action
  */
 public class AjoutAction extends Action {
-
-	private static final String FW_SUCCESS = "success";
 
 	private IPoissonService poissonService;
 
@@ -27,18 +26,21 @@ public class AjoutAction extends Action {
 	public ActionForward execute(final ActionMapping mapping, final ActionForm form, final HttpServletRequest req,
 			final HttpServletResponse res) {
 		final PoissonVO p = (PoissonVO) form;
-		try {
-		poissonService.save(p);
 		
-		}
-		catch(ConstraintViolationException e){
+		if ( req.getSession().getAttribute(ConstantsUtils.REQ_USER).equals(""))
+		{ return mapping.findForward(ConstantsUtils.FW_ERROR);}
+		else{
+		try {
+			poissonService.save(p);
+
+		} catch (ConstraintViolationException e) {
 			final ActionErrors errors = new ActionErrors();
-			errors.add("name_constraint",new ActionMessage("error.name.unique"));
+			errors.add("name_constraint", new ActionMessage("error.name.unique"));
 			saveErrors(req, errors);
 			return mapping.getInputForward();
 		}
-		return mapping.findForward(FW_SUCCESS);
-	
+		return mapping.findForward(ConstantsUtils.FW_SUCCESS);
+		}
 	}
 
 	/**

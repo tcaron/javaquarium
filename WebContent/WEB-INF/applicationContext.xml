@@ -71,9 +71,6 @@
 
 	<bean name="/addAquarium" class="com.javaquarium.action.AjoutAquariumAction"
 		singleton="true">
-		<property name="userAquariumService">
-			<ref bean="userAquariumService" />
-		</property>
 		<property name="poissonService">
 			<ref bean="poissonService" />
 		</property>
@@ -98,6 +95,10 @@
 		<property name="userAquariumService">
 			<ref bean="userAquariumService" />
 		</property>
+	</bean>
+	
+	<bean name="/logout" class="com.javaquarium.action.LogoutAction"
+		singleton="true">
 	</bean>
 </beans>
 

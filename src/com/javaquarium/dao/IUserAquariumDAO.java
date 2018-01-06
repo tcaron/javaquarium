@@ -5,10 +5,33 @@ import java.util.List;
 import com.javaquarium.beans.data.PoissonDO;
 import com.javaquarium.beans.data.UserDO;
 
-public interface IUserAquariumDAO  {
+/**
+ * 
+ * @author alex UserAquarium data access
+ *
+ */
+public interface IUserAquariumDAO {
+
+	/**
+	 * retourne la liste des poissons dans l'aquarium de l'utilisateur
+	 * 
+	 * @param user
+	 * @return
+	 */
 	List<PoissonDO> list(UserDO user);
-	
-	void deleteAquarium (UserDO user);
-	
-	void saveAquarium (UserDO user, List<PoissonDO> list);
+
+	/**
+	 * vide l'aquarium de l'utilisateur
+	 * 
+	 * @param user
+	 */
+	void deleteAquarium(UserDO user);
+
+	/**
+	 * sauvegarde l'aquarium de l'utilisateur
+	 * 
+	 * @param user
+	 * @param list
+	 */
+	void saveAquarium(UserDO user, List<PoissonDO> list);
 }

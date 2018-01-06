@@ -8,9 +8,8 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 
-
 /**
- * @author Alex Classic Action
+ * @author Alex Classic VO crud
  */
 
 public class UserVO extends ActionForm {
@@ -65,7 +64,6 @@ public class UserVO extends ActionForm {
 		this.repeatPassword = password;
 	}
 
-	
 	@Override
 	public ActionErrors validate(final ActionMapping mapping, final HttpServletRequest request) {
 		final ActionErrors errors = new ActionErrors();
@@ -73,27 +71,28 @@ public class UserVO extends ActionForm {
 		if (StringUtils.isEmpty(getLogin())) {
 			errors.add("nom", new ActionMessage("errors.inscription.field.nom", "Nom"));
 		}
-		
-		if (getLogin().length() < 4){
+
+		if (getLogin().length() < 4) {
 			errors.add("nom", new ActionMessage("errors.inscription.field.limitnom", "Nom"));
 		}
-		
+
 		if (StringUtils.isEmpty(getPassword())) {
 			errors.add("mot de passe", new ActionMessage("errors.inscription.field.password", "Mot de passe"));
-		}	
-		
-		if (StringUtils.isEmpty(getRepeatPassword())) {
-			errors.add("mot de passe", new ActionMessage("errors.inscription.field.password", "Mot de passe à nouveau"));
 		}
-		
+
+		if (StringUtils.isEmpty(getRepeatPassword())) {
+			errors.add("mot de passe",
+					new ActionMessage("errors.inscription.field.password", "Mot de passe à nouveau"));
+		}
+
 		if (getPassword().length() < 4) {
 			errors.add("mot de passe", new ActionMessage("errors.inscription.field.limitpassword", "Mot de passe"));
 		}
-		
+
 		if (getPassword().compareTo(getRepeatPassword()) != 0) {
 			errors.add("mot de passe", new ActionMessage("errors.inscription.field.repeat", "Mot de passe"));
 		}
-		
+
 		return errors;
 	}
 }

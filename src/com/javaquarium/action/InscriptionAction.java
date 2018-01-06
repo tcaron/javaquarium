@@ -13,6 +13,7 @@ import org.hibernate.exception.ConstraintViolationException;
 
 import com.javaquarium.beans.web.UserVO;
 import com.javaquarium.business.IUserService;
+import com.javaquarium.util.ConstantsUtils;
 
 /**
  * @author Alex Classic Action
@@ -20,23 +21,24 @@ import com.javaquarium.business.IUserService;
 
 public class InscriptionAction extends Action {
 
-	
-	private static final String FW_SUCCESS = "success";
-    private  IUserService utilisateurService ; 
-	@SuppressWarnings("deprecation")
-	public ActionForward execute(final ActionMapping mapping, final ActionForm form, final HttpServletRequest req, final HttpServletResponse res) {
+	private IUserService utilisateurService;
 
-		UserVO utilisateur = (UserVO)form ;
-		
+	@SuppressWarnings("deprecation")
+	public ActionForward execute(final ActionMapping mapping, final ActionForm form, final HttpServletRequest req,
+			final HttpServletResponse res) {
+
+		UserVO utilisateur = (UserVO) form;
+
 		try {
 			utilisateurService.save(utilisateur);
-		} catch(ConstraintViolationException e) {
+		} catch (ConstraintViolationException e) {
 			ActionErrors errors = new ActionErrors();
 			errors.add("utilisateur_unique", new ActionMessage("error.name.utilisateur_unique"));
 			saveErrors(req, errors);
 			return mapping.getInputForward();
 		}
-		return mapping.findForward(FW_SUCCESS);
+		return mapping.findForward(ConstantsUtils.FW_SUCCESS);
+
 	}
 
 	/**

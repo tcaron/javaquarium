@@ -7,11 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
 /**
- * @author Alex Classic Action
+ * @author Alex Classic Data object
  */
-
 @Entity
 @Table(name = "user")
 public class UserDO {
@@ -26,7 +24,7 @@ public class UserDO {
 
 	@Column(name = "password")
 	private String password;
-	
+
 	/**
 	 * @return the id
 	 */
@@ -63,9 +61,10 @@ public class UserDO {
 	public String getPassword() {
 		return password;
 	}
-	
+
 	/**
-	 * @param hash the password hash to set
+	 * @param hash
+	 *            the password hash to set
 	 */
 	public void setPassword(String hash) {
 		this.password = hash;

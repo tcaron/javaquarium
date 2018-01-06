@@ -10,19 +10,14 @@ import org.apache.struts.action.ActionMessage;
 
 /**
  * 
- * @author alex
+ * @author alex classic VO Crud
  *
  */
 public class LoginVO extends ActionForm {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private String login;
 	private String password;
-
-	
 
 	@Override
 	public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
@@ -44,26 +39,32 @@ public class LoginVO extends ActionForm {
 		return errors;
 	}
 
-
-
+	/**
+	 * @return the password
+	 */
 	public String getPassword() {
 		return password;
 	}
 
-
-
+	/**
+	 * set the password
+	 * @param password
+	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
-
-
+	/**
+	 * @return the username
+	 */
 	public String getLogin() {
 		return login;
 	}
 
-
-
+	/**
+	 * set the username
+	 * @param login
+	 */
 	public void setLogin(String login) {
 		this.login = login;
 	}

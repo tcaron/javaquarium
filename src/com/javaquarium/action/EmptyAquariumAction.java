@@ -15,6 +15,9 @@ import com.javaquarium.beans.data.UserDO;
 import com.javaquarium.business.IUserAquariumService;
 import com.javaquarium.util.ConstantsUtils;
 
+/**
+ * @author Thomas, vide l'aquarium de l'utilisateur
+ */
 public class EmptyAquariumAction extends Action {
 
 	private IUserAquariumService userAquariumService;
@@ -23,26 +26,24 @@ public class EmptyAquariumAction extends Action {
 	public ActionForward execute(final ActionMapping mapping, final ActionForm form, final HttpServletRequest req,
 			final HttpServletResponse res) {
 
-		try {
-			
-			userAquariumService.emptyAquarium((UserDO) req.getSession().getAttribute(ConstantsUtils.REQ_USER_DO));
-			@SuppressWarnings("unchecked")
-			List<PoissonDO> list = (List<PoissonDO>)req.getSession().getAttribute(ConstantsUtils.AQUARIUM_LIST);
-			list.clear();
-			req.getSession().setAttribute(ConstantsUtils.AQUARIUM_LIST, list);
-			req.getSession().setAttribute(ConstantsUtils.AQUARIUM_COUNTER, list.size());
-			
-		} catch (NullPointerException e) {
-
+		if (req.getSession().getAttribute(ConstantsUtils.REQ_USER_DO) == null) {
 			return mapping.findForward(ConstantsUtils.FW_ERROR);
 		}
+       
+		userAquariumService.emptyAquarium((UserDO) req.getSession().getAttribute(ConstantsUtils.REQ_USER_DO));
+		@SuppressWarnings("unchecked")
+		List<PoissonDO> list = (List<PoissonDO>) req.getSession().getAttribute(ConstantsUtils.AQUARIUM_LIST);
+		list.clear();
+		req.getSession().setAttribute(ConstantsUtils.AQUARIUM_LIST, list);
+		req.getSession().setAttribute(ConstantsUtils.AQUARIUM_COUNTER, list.size());
+
 		return mapping.findForward(ConstantsUtils.FW_SUCCESS);
 
 	}
 
 	/**
-	 * @param UserService
-	 *            the UserService to set
+	 * @param UserAquariumService
+	 *            the UserAquariumService to set
 	 */
 	public void setUserAquariumService(IUserAquariumService userAquariumService) {
 		this.userAquariumService = userAquariumService;

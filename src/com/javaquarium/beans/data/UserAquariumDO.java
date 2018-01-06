@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
- * @author Thomas Classic Action
+ * @author Thomas Classic Data object
  */
 
 @Entity
@@ -23,11 +23,11 @@ public class UserAquariumDO {
 	@Column(name = "id")
 	private Integer id;
 
-	@ManyToOne(cascade = CascadeType.ALL )
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "user")
 	private UserDO user;
 
-	@ManyToOne(cascade = CascadeType.ALL )
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "poisson")
 	private PoissonDO poisson;
 

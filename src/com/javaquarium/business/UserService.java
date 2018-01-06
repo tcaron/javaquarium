@@ -1,6 +1,5 @@
 package com.javaquarium.business;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,18 +9,16 @@ import com.javaquarium.dao.IUserDAO;
 import com.javaquarium.dao.UserDAO;
 
 /**
- * @author Alex Classic Action
+ * @author Alex Service pour la gestion des utilisateurs
  */
 public class UserService implements IUserService {
 
 	private IUserDAO userDao;
 
-	
 	public UserService() {
 		userDao = new UserDAO();
 	}
 
-	
 	@Override
 	public List<UserVO> getAllUser() {
 		final List<UserDO> listUser = userDao.getAllUser();
@@ -32,13 +29,11 @@ public class UserService implements IUserService {
 		return users;
 	}
 
-	
 	@Override
 	public void save(UserVO user) {
 		UserDO u = this.map(user);
 		userDao.insert(u);
 	}
-
 
 	@Override
 	public UserVO map(final UserDO user) {
@@ -46,29 +41,26 @@ public class UserService implements IUserService {
 		userVO.setLogin(user.getLogin());
 		userVO.setPassword(user.getPassword());
 		userVO.setRepeatPassword("");
-	
+
 		return userVO;
 	}
 
-	
 	@Override
 	public UserDO map(final UserVO user) {
 		final UserDO userDO = new UserDO();
-	
+
 		userDO.setLogin(user.getLogin());
 		userDO.setPassword(user.getPassword());
-	
+
 		return userDO;
 	}
 
-	
 	@Override
 	public UserVO getUser(String login) {
-	    UserVO user = map(userDao.find(login));
+		UserVO user = map(userDao.find(login));
 		return user;
 	}
 
-	
 	/**
 	 * setter userDao
 	 * 
@@ -78,5 +70,4 @@ public class UserService implements IUserService {
 		this.userDao = userDao;
 	}
 
-	
 }

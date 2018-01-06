@@ -7,34 +7,35 @@ import com.javaquarium.beans.web.PoissonVO;
 
 /**
  * 
- * @author alex
+ * @author alex Interface pour service Poisson
  *
  */
 public interface IPoissonService {
 
 	/**
-	 * Classic CRUD
+	 * Liste de tout les poissons
 	 * 
 	 * @return
 	 */
 	List<PoissonVO> findAll();
 
 	/**
-	 * Classic CRUD
+	 * trouve un poisson en fonction du param
 	 * 
 	 * @param id
+	 * @return
 	 */
 	PoissonDO find(Integer id);
 
 	/**
-	 * Classic CRUD
+	 * sauvegarde un nouveau poisson
 	 * 
 	 * @param poissonvo
 	 */
 	void save(PoissonVO poissonvo);
 
 	/**
-	 * Classic CRUD
+	 * supprime un poisson en fonction de son id
 	 * 
 	 * @param code
 	 */
